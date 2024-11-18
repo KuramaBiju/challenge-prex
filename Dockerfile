@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
+    netcat-openbsd \
     && docker-php-ext-install pdo pdo_mysql sockets zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -16,4 +17,11 @@ COPY . .
 
 RUN composer install
 
-RUN php artisan migrate --force && php artisan passport:install && php artisan db:seed
+COPY init.sh /app/init.sh
+
+RUN chmod +x /app/init.sh
+
+COPY .env.example /app/.env
+
+RUN chmod 644 /app/.env
+
