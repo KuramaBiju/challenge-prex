@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "07c5fe0e-545a-4921-a7fc-93a03038f0c8",
+		"name": "Challenge Prex",
+		"description": "Endpoints for the prex challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9999347",
+		"_collection_link": "https://lunar-shadow-437443.postman.co/workspace/294f874d-1d59-4c4c-8a0e-0f807251fcd3/collection/9999347-07c5fe0e-545a-4921-a7fc-93a03038f0c8?action=share&source=collection_link&creator=9999347"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"CHALLENGE_TOKEN\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@prex.com\",\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{CHALLENGE_API_URL}}login",
+							"host": [
+								"{{CHALLENGE_API_URL}}login"
+							]
+						},
+						"description": "The endpoint allows users to log in using their email and password.\n\n### Request Body\n\n- email (string, required): The email address of the user.\n    \n- password (string, required): The password of the user.\n    \n\n### Success Response\n\nThe request returns a status code of 200 and a JSON response with the following fields:\n\n- `access_token` (string): The access token for the authenticated user.\n    \n- `token_type` (string): The type of token issued.\n    \n- `expires_in` (integer): The duration in seconds for which the token is valid.\n    \n\n### Error Response\n\nIn case of an error, the API returns a 401 status code with a JSON response body. The response body contains a \"message\" field which provides information about the error encountered during the login process.\n\n- `message` (string): Information about the error\n    \n\n### Error Response Example\n\n``` json\n{\n    \"message\": \"Error message here\"\n}\n\n ```\n\n### Success Response Example\n\n``` json\n{\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWZlZjZmM2NjOTYwZWVmN2FlZGI0OWVjOWVmOTcxZjU2MTgyODQ2YWZlNWE0NjkxYzQ5OTZhMGY5NjEyZjlhYzU2YjcwYTIzMzE3YmRhZDIiLCJpYXQiOjE3MzE4OTI5NDYuMDczNDUyLCJuYmYiOjE3MzE4OTI5NDYuMDczNDUzLCJleHAiOjE3MzE4OTQ3NDYuMDY0MDEzLCJzdWIiOiIxNCIsInNjb3BlcyI6W119.YpMJ1T226FKmIsML8x25uFgSt9ledy4ZQ64wPyweRvdX30tOhvMs67BQve-sysyVGqCHQyM68Z-RRj8Knb-MY1gXcrmt-hPWjNXIGHtSQvnJu7xuqwJP-nzCr__QxJSTYD_aN3B4LXJvY4VvQR0eDYeifyp9dJpcujEcOgdAzbXCGdixQslN-1OL3tneT5UnuuF0hIn05z0oHmOaceToWWKQtydvOgCZGBKUwBG_VO5hNOf9cN9mMSr5UxMkr98K5O7qnogKOvsljpVMYkvKuu1nMw1UbKnNHLwE97vTtDRsdMDGlMgY5SkWUGzQl2kMAVwFaQ8I59xjR8fmVXZ5X44Dn9eYkSb75-DKneI3IjcDMjiQY7J6XJaEcZaQtCYMeNzQHqkbYW22l607zitKwPQruBzObrsyMCvQOWclrQA8Nip2TU8YmrLpfkw4nZgKNz9wSqdwrEhpS2DjcL6mYNu9Jz-o0iZWNQqVqHekkk6ZZKWAOtZpDZZwcpheND1U4z6ojh3M5IVnnfQq-Farg4pXeOaIPMPMH5OU7JRnlVzB1CHM1MRGQR8BHq9rOwUqXQi6Gi9vSu3SyYHLo7s-63bIt3LVUk8jVvD88bXhI2RVVFLXsSRL-xoKgq8vz7Vgmj0oRcaDaJAHg8GkxmaTiHiDHE37ZRuI-5j8JoTZGy0\",\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 1800\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"fggfgfgfgllgg@example.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{CHALLENGE_API_URL}}register",
+							"host": [
+								"{{CHALLENGE_API_URL}}register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gifs",
+			"item": [
+				{
+					"name": "Save Favorite Gif",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CHALLENGE_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 1,\n  \"gif_id\": \"tetstst\",\n  \"alias\": \"Pepet mujica\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{CHALLENGE_API_URL}}gif/save",
+							"host": [
+								"{{CHALLENGE_API_URL}}gif"
+							],
+							"path": [
+								"save"
+							]
+						},
+						"description": "This endpoint allows you to save a GIF with the provided user ID, GIF ID, and alias.\n\n### Request Body\n\n- `user_id` (integer, required) - The ID of the user saving the GIF.\n    \n- `gif_id` (string, required) - The ID of the GIF to be saved.\n    \n- `alias` (string, required) - An alias for the saved GIF.\n    \n\n### Success Response\n\nThe request returns a status code of 200 and a JSON response with the following fields:\n\n- `messagge` (string):\n    \n\n### Error Response\n\nIn case of an error, the API returns a 422 status code and a JSON response with the following fields:\n\n- `message` (string): Information about the error\n    \n- `errors` (string): Array with errors\n    \n\n### Example Error Response\n\n``` json\n{\n    \"message\": \"The alias field is required.\",\n    \"errors\": {\n        \"alias\": [\n            \"The alias field is required.\"\n        ]\n    }\n}\n\n ```\n\n### Example Success Response\n\n``` json\n{\n    \"message\": \"Gif saved successfully\"\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Gif By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CHALLENGE_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{CHALLENGE_API_URL}}gif/search/:gifId",
+							"host": [
+								"{{CHALLENGE_API_URL}}gif"
+							],
+							"path": [
+								"search",
+								":gifId"
+							],
+							"variable": [
+								{
+									"key": "gifId",
+									"value": "khjhjjh",
+									"description": "required|string"
+								}
+							]
+						},
+						"description": "This API endpoint makes an HTTP GET request to retrieve details of a specific GIF by its ID. The request should include the GIF ID in the URL path parameter.\n\n### Request\n\n- Path parameter:\n    \n    - gifId(string, required): The unique identifier of the GIF to be retrieved.\n        \n\n### Success Response\n\nThe response will be in JSON format with a status code of 200. It will contain various details about the GIF, including its type, URL, source, title, rating, and images in different formats and sizes. Additionally, it provides information about the user who uploaded the GIF and analytics data.\n\nThe response will not include any specific user input, as the request only requires the GIF ID to be provided in the URL path parameter.\n\n### Error Response\n\nIn case of an error, the API returns a 404 status code with a JSON response body. The response body contains a \"message\" field which provides information about the error encountered during the login process.\n\n- `message` (string): Information about the error"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Gif By Phrase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CHALLENGE_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{CHALLENGE_API_URL}}gif/search?query=funny&limit=10&offset=0",
+							"host": [
+								"{{CHALLENGE_API_URL}}gif"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "funny",
+									"description": "required|string"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						},
+						"description": "### GIF Search\n\nThis endpoint retrieves a list of GIFs based on the provided query with options to limit the number of results and set an offset for pagination.\n\n### Request\n\n- Query parameter:\n    \n    - query(string, required): The search term used to find GIFs.\n        \n    - limit(string, optional): Specifies the maximum number of GIFs to return. Defaults to a predetermined value if not provided.\n        \n    - offset(string, optional): Sets the starting point for the search results, allowing for paginated responses.\n        \n\n#### Success Response\n\nUpon a successful request, the server responds with a status code of 200 and a JSON object containing an array of GIF objects. Each GIF object includes various properties such as type, id, URL, slug, embed URL, username, source, title, rating, and image URLs in different formats and sizes.\n\n### Error Response\n\nIn case of an error, the API returns a 500 status code with a JSON response body. The response body contains a \"message\" field which provides information about the error encountered during the login process.\n\n- `message` (string): Information about the error"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "CHALLENGE_API_URL",
+			"value": "http://127.0.0.1:8000/api/v1/",
+			"type": "string"
+		},
+		{
+			"key": "CHALLENGE_TOKEN",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
