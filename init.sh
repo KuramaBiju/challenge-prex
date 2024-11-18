@@ -2,7 +2,7 @@
 
 if( ! -f /app/vendor/autoload.php); then
     echo "Installing Composer dependecies"
-    composer install --no-dev --optimize-autoloader
+    composer install --optimize-autoloader
 fi 
 
 if( ! -f /app/.env); then
