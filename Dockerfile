@@ -15,13 +15,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install
-
 COPY init.sh /app/init.sh
 
 RUN chmod +x /app/init.sh
-
-COPY .env.example /app/.env
-
-RUN chmod 644 /app/.env
 
