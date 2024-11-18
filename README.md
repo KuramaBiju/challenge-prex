@@ -17,9 +17,9 @@ Este repositorio contiene la solución para el Challenge Prex PHP que integra la
 
 -   **PHP 8.2+**
 -   **Laravel 10**
--   **MySQL o MariaDB**
--   **Docker** para contenedores
--   **UML** para diagramas
+-   **MySQL**
+-   **Docker** 
+-   **UML**
 
 ---
 
@@ -61,6 +61,18 @@ docker exec -it Serve php artisan test --testsuite=Unit
 ```bash
 docker exec -it Serve php artisan test --testsuite=Feature
 ```
+
+### 📚 Documentación
+
+Toda la documentación relacionada con este proyecto se encuentra en la carpeta `/docs`. Dentro de esta carpeta, podrás encontrar los siguientes archivos y recursos:
+
+- **Colección de Postman**: Una colección de Postman con los endpoints de la API para probar los endpoints.
+- **Diagrama DER**: Un diagrama entidad-relación que muestra la estructura de la base de datos utilizada por la aplicación.
+- **Diagrama de Casos de Uso**: Representación gráfica de los casos de uso de la aplicación, detallando las interacciones entre los usuarios y el sistema.
+- **Diagrama de Secuencia**: Diagrama que muestra las interacciones secuenciales entre los componentes del sistema durante el flujo de una operación.
+
+
+
 
 ## 🌟 Recursos adicionales
 
