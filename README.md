@@ -42,7 +42,7 @@ cd https://github.com/KuramaBiju/challenge-prex
 docker-compose up -d
 ```
 
-2. Abrir otra terminal y ejecutar para las queues:
+2. Abrir otra terminal y ejecutar el siguiente comando para las queues:
 
 ```bash
 docker exec -it Serve php artisan schedule:work
