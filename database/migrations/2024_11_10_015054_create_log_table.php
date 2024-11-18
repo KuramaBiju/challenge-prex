@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->string('service');
-            $table->string('body_request');
+            $table->longText('body_request');
             $table->string('http_status');
-            $table->string('body_response');
+            $table->longText('body_response');
             $table->string('ip_address');
             $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
