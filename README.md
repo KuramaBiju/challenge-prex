@@ -33,6 +33,10 @@ Este repositorio contiene la solución para el Challenge Prex PHP que integra la
 git clone https://github.com/KuramaBiju/challenge-prex
 cd https://github.com/KuramaBiju/challenge-prex
 ```
+3. **API Key de Giphy**: Crea una cuenta en [developers.giphy.com](https://developers.giphy.com) y genera una **API Key**. Luego, coloca esta clave en el archivo `.env.example` en la variable `GIPHY_API_KEY`. Ejemplo: 
+```bash
+GIPHY_API_KEY=tu_clave_api
+```
 
 ### Comandos principales
 
